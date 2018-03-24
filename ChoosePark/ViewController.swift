@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDataSource {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -55,6 +55,14 @@ class ViewController: UIViewController, UITableViewDataSource {
         cell.parkSceneIntroLabel.text = parkSceneIntro
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let parkName = ParkScenes.sharedInstance().parkNameArray[indexPath.section]
+        let detailVC : DetailViewController = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "detailVC") as! DetailViewController
+        detailVC.parkName = parkName
+        detailVC.indexPath = indexPath.row
+        self.navigationController?.pushViewController(detailVC, animated: true)
     }
 
 
