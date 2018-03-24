@@ -8,6 +8,7 @@
 
 import Foundation
 import Alamofire
+import SwiftyJSON
 
 class ApiManager : NSObject {
     
@@ -23,7 +24,8 @@ class ApiManager : NSObject {
         }
         
         Alamofire.request(requestUrl!, method: .get, parameters: paramDic, encoding: URLEncoding.default, headers: nil).responseJSON { (dataResponse) in
-            print(dataResponse)
+            
+            ParkScenes.sharedInstance().convertJsonToParkScenesWithData(dataResponse.data)
         }
     }
     

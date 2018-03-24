@@ -15,6 +15,7 @@
 		AACDCBE82064FB8000AF4CDA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AACDCBE62064FB8000AF4CDA /* LaunchScreen.storyboard */; };
 		AACDCBF82066060F00AF4CDA /* ParkScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACDCBF72066060F00AF4CDA /* ParkScene.swift */; };
 		AACDCBFA206606C000AF4CDA /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACDCBF9206606C000AF4CDA /* ApiManager.swift */; };
+		AACDCBFC2066453C00AF4CDA /* ParkSceneTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACDCBFB2066453C00AF4CDA /* ParkSceneTableViewCell.swift */; };
 		EEA9FA7944E9C53AEE477C94 /* Pods_ChoosePark.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31EFE6F519656566319D5684 /* Pods_ChoosePark.framework */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +34,7 @@
 		AACDCBF6206509A800AF4CDA /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AACDCBF72066060F00AF4CDA /* ParkScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkScene.swift; sourceTree = "<group>"; };
 		AACDCBF9206606C000AF4CDA /* ApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
+		AACDCBFB2066453C00AF4CDA /* ParkSceneTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkSceneTableViewCell.swift; sourceTree = "<group>"; };
 		B8E7468E8436A5436AD6459F /* Pods-ChoosePark.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChoosePark.release.xcconfig"; path = "Pods/Target Support Files/Pods-ChoosePark/Pods-ChoosePark.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -81,6 +83,7 @@
 			children = (
 				AACDCBDA2064FB7F00AF4CDA /* AppDelegate.swift */,
 				AACDCBDC2064FB8000AF4CDA /* ViewController.swift */,
+				AACDCBFB2066453C00AF4CDA /* ParkSceneTableViewCell.swift */,
 				AACDCBF72066060F00AF4CDA /* ParkScene.swift */,
 				AACDCBF9206606C000AF4CDA /* ApiManager.swift */,
 				AACDCBDE2064FB8000AF4CDA /* Main.storyboard */,
@@ -198,10 +201,12 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-ChoosePark/Pods-ChoosePark-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -230,6 +235,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AACDCBFC2066453C00AF4CDA /* ParkSceneTableViewCell.swift in Sources */,
 				AACDCBDD2064FB8000AF4CDA /* ViewController.swift in Sources */,
 				AACDCBDB2064FB7F00AF4CDA /* AppDelegate.swift in Sources */,
 				AACDCBFA206606C000AF4CDA /* ApiManager.swift in Sources */,

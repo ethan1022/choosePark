@@ -7,5 +7,6 @@ target 'ChoosePark' do
 
   # Pods for ChoosePark
   pod 'Alamofire'
+  pod 'SwiftyJSON'
 
 end
