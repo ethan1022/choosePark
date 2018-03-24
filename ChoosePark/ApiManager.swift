@@ -16,6 +16,7 @@ class ApiManager : NSObject {
     
     func fetchNewDataWithLimitNumber(_ limit:Int? , offset:Int?) {
         var paramDic : Dictionary = ["scope":"resourceAquire", "rid":"bf073841-c734-49bf-a97f-3757a6013812"]
+        
         if let limit = limit {
             paramDic["limit"] = "\(limit)"
         }
@@ -24,7 +25,6 @@ class ApiManager : NSObject {
         }
         
         Alamofire.request(requestUrl!, method: .get, parameters: paramDic, encoding: URLEncoding.default, headers: nil).responseJSON { (dataResponse) in
-            
             ParkScenes.sharedInstance().convertJsonToParkScenesWithData(dataResponse.data)
         }
     }

@@ -15,7 +15,7 @@ class ViewController: UIViewController, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        ApiManager.init().fetchNewDataWithLimitNumber(10, offset: 0)
+        ApiManager.init().fetchNewDataWithLimitNumber(nil, offset: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(reloadData), name: NSNotification.Name(rawValue: "reloadTableView"), object: nil)
     }
     
@@ -28,17 +28,29 @@ class ViewController: UIViewController, UITableViewDataSource {
         // Dispose of any resources that can be recreated.
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return ParkScenes.sharedInstance().parkSceneArray.count
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return ParkScenes.sharedInstance().parkNameArray.count
     }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return ParkScenes.sharedInstance().parkNameArray[section]
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let sectionTitle : String = ParkScenes.sharedInstance().parkNameArray[section]
+        return ParkScenes.sharedInstance().parkSceneDic[sectionTitle]!.count
+    }
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell : ParkSceneTableViewCell = tableView.dequeueReusableCell(withIdentifier: "parkSceneCell", for: indexPath) as! ParkSceneTableViewCell
-        let parkSceneName : String = ParkScenes.sharedInstance().parkSceneArray[indexPath.row].name
-        let parkName : String = ParkScenes.sharedInstance().parkSceneArray[indexPath.row].parkName
-        let parkSceneIntro : String = ParkScenes.sharedInstance().parkSceneArray[indexPath.row].introduction
         
-        cell.parkNameLabel.text = parkName
+        let parkName = ParkScenes.sharedInstance().parkNameArray[indexPath.section]
+        let parkSceneName : String = ParkScenes.sharedInstance().parkSceneDic[parkName]![indexPath.row].name
+        let singleParkName : String = ParkScenes.sharedInstance().parkSceneDic[parkName]![indexPath.row].parkName
+        let parkSceneIntro : String = ParkScenes.sharedInstance().parkSceneDic[parkName]![indexPath.row].introduction
+        
+        cell.parkNameLabel.text = singleParkName
         cell.parkSceneNameLabel.text = parkSceneName
         cell.parkSceneIntroLabel.text = parkSceneIntro
         

@@ -40,7 +40,8 @@ class ParkScenes: NSObject {
         return parkScenes!
     }
     
-    var parkSceneArray : Array<ParkScene> = []
+    var parkSceneDic : [String:Array<ParkScene>] = [:]
+    var parkNameArray : Array<String> = []
     
     func convertJsonToParkScenesWithData(_ data: Data?) {
         do {
@@ -53,12 +54,22 @@ class ParkScenes: NSObject {
                                                                openTime: dic["OpenTime"].string!,
                                                                imageUrlString: dic["Image"].string!,
                                                                introduction: dic["Introduction"].string!)
-                    self.parkSceneArray.append(parkScene)
+                    
+                    if self.parkNameArray.count == 0 || self.parkNameArray.last != dic["ParkName"].string {
+                        self.parkNameArray.append(dic["ParkName"].string!)
+                        self.parkSceneDic[dic["ParkName"].string!] = [parkScene]
+                    }
+                    else {
+                        self.parkSceneDic[dic["ParkName"].string!]!.append(parkScene)
+                    }
+                    
                 }
+                print("downloaded")
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reloadTableView"), object: nil)
             }
         }
         catch {
+            print("failed")
             //TODO: error handling
         }
     }
