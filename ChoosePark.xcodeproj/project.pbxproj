@@ -8,16 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		AA8484462066B09900DD57ED /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8484452066B09900DD57ED /* DetailViewController.swift */; };
-		AA848448206773BD00DD57ED /* OtherScenesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA848447206773BD00DD57ED /* OtherScenesCollectionViewCell.swift */; };
+		AA84844C20677C3200DD57ED /* OtherScenesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA84844A20677C3200DD57ED /* OtherScenesCollectionViewCell.swift */; };
+		AA84844D20677C3200DD57ED /* ParkSceneTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA84844B20677C3200DD57ED /* ParkSceneTableViewCell.swift */; };
+		AA84845020677C3C00DD57ED /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA84844F20677C3C00DD57ED /* ApiManager.swift */; };
+		AA84845320677C4A00DD57ED /* ParkScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA84845220677C4A00DD57ED /* ParkScene.swift */; };
 		AACDCBDB2064FB7F00AF4CDA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACDCBDA2064FB7F00AF4CDA /* AppDelegate.swift */; };
 		AACDCBDD2064FB8000AF4CDA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACDCBDC2064FB8000AF4CDA /* ViewController.swift */; };
 		AACDCBE02064FB8000AF4CDA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AACDCBDE2064FB8000AF4CDA /* Main.storyboard */; };
 		AACDCBE32064FB8000AF4CDA /* ChoosePark.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AACDCBE12064FB8000AF4CDA /* ChoosePark.xcdatamodeld */; };
 		AACDCBE52064FB8000AF4CDA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AACDCBE42064FB8000AF4CDA /* Assets.xcassets */; };
 		AACDCBE82064FB8000AF4CDA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AACDCBE62064FB8000AF4CDA /* LaunchScreen.storyboard */; };
-		AACDCBF82066060F00AF4CDA /* ParkScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACDCBF72066060F00AF4CDA /* ParkScene.swift */; };
-		AACDCBFA206606C000AF4CDA /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACDCBF9206606C000AF4CDA /* ApiManager.swift */; };
-		AACDCBFC2066453C00AF4CDA /* ParkSceneTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACDCBFB2066453C00AF4CDA /* ParkSceneTableViewCell.swift */; };
 		EEA9FA7944E9C53AEE477C94 /* Pods_ChoosePark.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31EFE6F519656566319D5684 /* Pods_ChoosePark.framework */; };
 /* End PBXBuildFile section */
 
@@ -25,7 +25,10 @@
 		31EFE6F519656566319D5684 /* Pods_ChoosePark.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChoosePark.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		912342289A73ACF301F5D6CD /* Pods-ChoosePark.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChoosePark.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ChoosePark/Pods-ChoosePark.debug.xcconfig"; sourceTree = "<group>"; };
 		AA8484452066B09900DD57ED /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
-		AA848447206773BD00DD57ED /* OtherScenesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherScenesCollectionViewCell.swift; sourceTree = "<group>"; };
+		AA84844A20677C3200DD57ED /* OtherScenesCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherScenesCollectionViewCell.swift; sourceTree = "<group>"; };
+		AA84844B20677C3200DD57ED /* ParkSceneTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParkSceneTableViewCell.swift; sourceTree = "<group>"; };
+		AA84844F20677C3C00DD57ED /* ApiManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
+		AA84845220677C4A00DD57ED /* ParkScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParkScene.swift; sourceTree = "<group>"; };
 		AACDCBD72064FB7F00AF4CDA /* ChoosePark.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChoosePark.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AACDCBDA2064FB7F00AF4CDA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AACDCBDC2064FB8000AF4CDA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -36,9 +39,6 @@
 		AACDCBE92064FB8000AF4CDA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AACDCBF02065095100AF4CDA /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AACDCBF6206509A800AF4CDA /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		AACDCBF72066060F00AF4CDA /* ParkScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkScene.swift; sourceTree = "<group>"; };
-		AACDCBF9206606C000AF4CDA /* ApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
-		AACDCBFB2066453C00AF4CDA /* ParkSceneTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkSceneTableViewCell.swift; sourceTree = "<group>"; };
 		B8E7468E8436A5436AD6459F /* Pods-ChoosePark.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChoosePark.release.xcconfig"; path = "Pods/Target Support Files/Pods-ChoosePark/Pods-ChoosePark.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -64,6 +64,31 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		AA84844920677C3200DD57ED /* view */ = {
+			isa = PBXGroup;
+			children = (
+				AA84844A20677C3200DD57ED /* OtherScenesCollectionViewCell.swift */,
+				AA84844B20677C3200DD57ED /* ParkSceneTableViewCell.swift */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		AA84844E20677C3C00DD57ED /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				AA84844F20677C3C00DD57ED /* ApiManager.swift */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		AA84845120677C4A00DD57ED /* model */ = {
+			isa = PBXGroup;
+			children = (
+				AA84845220677C4A00DD57ED /* ParkScene.swift */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
 		AACDCBCE2064FB7F00AF4CDA = {
 			isa = PBXGroup;
 			children = (
@@ -85,14 +110,13 @@
 		AACDCBD92064FB7F00AF4CDA /* ChoosePark */ = {
 			isa = PBXGroup;
 			children = (
+				AACDCBDE2064FB8000AF4CDA /* Main.storyboard */,
 				AACDCBDA2064FB7F00AF4CDA /* AppDelegate.swift */,
 				AACDCBDC2064FB8000AF4CDA /* ViewController.swift */,
 				AA8484452066B09900DD57ED /* DetailViewController.swift */,
-				AACDCBFB2066453C00AF4CDA /* ParkSceneTableViewCell.swift */,
-				AA848447206773BD00DD57ED /* OtherScenesCollectionViewCell.swift */,
-				AACDCBF72066060F00AF4CDA /* ParkScene.swift */,
-				AACDCBF9206606C000AF4CDA /* ApiManager.swift */,
-				AACDCBDE2064FB8000AF4CDA /* Main.storyboard */,
+				AA84844E20677C3C00DD57ED /* controller */,
+				AA84844920677C3200DD57ED /* view */,
+				AA84845120677C4A00DD57ED /* model */,
 				AACDCBE42064FB8000AF4CDA /* Assets.xcassets */,
 				AACDCBE62064FB8000AF4CDA /* LaunchScreen.storyboard */,
 				AACDCBE92064FB8000AF4CDA /* Info.plist */,
@@ -241,13 +265,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA848448206773BD00DD57ED /* OtherScenesCollectionViewCell.swift in Sources */,
-				AACDCBFC2066453C00AF4CDA /* ParkSceneTableViewCell.swift in Sources */,
+				AA84844D20677C3200DD57ED /* ParkSceneTableViewCell.swift in Sources */,
 				AACDCBDD2064FB8000AF4CDA /* ViewController.swift in Sources */,
+				AA84844C20677C3200DD57ED /* OtherScenesCollectionViewCell.swift in Sources */,
+				AA84845020677C3C00DD57ED /* ApiManager.swift in Sources */,
 				AACDCBDB2064FB7F00AF4CDA /* AppDelegate.swift in Sources */,
-				AACDCBFA206606C000AF4CDA /* ApiManager.swift in Sources */,
-				AACDCBF82066060F00AF4CDA /* ParkScene.swift in Sources */,
 				AACDCBE32064FB8000AF4CDA /* ChoosePark.xcdatamodeld in Sources */,
+				AA84845320677C4A00DD57ED /* ParkScene.swift in Sources */,
 				AA8484462066B09900DD57ED /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
