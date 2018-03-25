@@ -12,6 +12,8 @@
 		AA84844D20677C3200DD57ED /* ParkSceneTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA84844B20677C3200DD57ED /* ParkSceneTableViewCell.swift */; };
 		AA84845020677C3C00DD57ED /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA84844F20677C3C00DD57ED /* ApiManager.swift */; };
 		AA84845320677C4A00DD57ED /* ParkScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA84845220677C4A00DD57ED /* ParkScene.swift */; };
+		AA8484552067807400DD57ED /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8484542067807400DD57ED /* ImageManager.swift */; };
+		AA848457206780AC00DD57ED /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA848456206780AC00DD57ED /* Strings.swift */; };
 		AACDCBDB2064FB7F00AF4CDA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACDCBDA2064FB7F00AF4CDA /* AppDelegate.swift */; };
 		AACDCBDD2064FB8000AF4CDA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACDCBDC2064FB8000AF4CDA /* ViewController.swift */; };
 		AACDCBE02064FB8000AF4CDA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AACDCBDE2064FB8000AF4CDA /* Main.storyboard */; };
@@ -29,6 +31,8 @@
 		AA84844B20677C3200DD57ED /* ParkSceneTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParkSceneTableViewCell.swift; sourceTree = "<group>"; };
 		AA84844F20677C3C00DD57ED /* ApiManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
 		AA84845220677C4A00DD57ED /* ParkScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParkScene.swift; sourceTree = "<group>"; };
+		AA8484542067807400DD57ED /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
+		AA848456206780AC00DD57ED /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		AACDCBD72064FB7F00AF4CDA /* ChoosePark.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChoosePark.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AACDCBDA2064FB7F00AF4CDA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AACDCBDC2064FB8000AF4CDA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -77,6 +81,7 @@
 			isa = PBXGroup;
 			children = (
 				AA84844F20677C3C00DD57ED /* ApiManager.swift */,
+				AA8484542067807400DD57ED /* ImageManager.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -85,6 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				AA84845220677C4A00DD57ED /* ParkScene.swift */,
+				AA848456206780AC00DD57ED /* Strings.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -267,7 +273,9 @@
 			files = (
 				AA84844D20677C3200DD57ED /* ParkSceneTableViewCell.swift in Sources */,
 				AACDCBDD2064FB8000AF4CDA /* ViewController.swift in Sources */,
+				AA848457206780AC00DD57ED /* Strings.swift in Sources */,
 				AA84844C20677C3200DD57ED /* OtherScenesCollectionViewCell.swift in Sources */,
+				AA8484552067807400DD57ED /* ImageManager.swift in Sources */,
 				AA84845020677C3C00DD57ED /* ApiManager.swift in Sources */,
 				AACDCBDB2064FB7F00AF4CDA /* AppDelegate.swift in Sources */,
 				AACDCBE32064FB8000AF4CDA /* ChoosePark.xcdatamodeld in Sources */,

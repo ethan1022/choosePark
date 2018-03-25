@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
@@ -49,15 +50,35 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let parkSceneName : String = ParkScenes.sharedInstance().parkSceneDic[parkName]![indexPath.row].name
         let singleParkName : String = ParkScenes.sharedInstance().parkSceneDic[parkName]![indexPath.row].parkName
         let parkSceneIntro : String = ParkScenes.sharedInstance().parkSceneDic[parkName]![indexPath.row].introduction
+        let parkSceneImage : URL? = ParkScenes.sharedInstance().parkSceneDic[parkName]![indexPath.row].imageUrl
         
         cell.parkNameLabel.text = singleParkName
         cell.parkSceneNameLabel.text = parkSceneName
         cell.parkSceneIntroLabel.text = parkSceneIntro
+        cell.parkSceneImageView.image = nil //TODO: 先用預設圖片
+        
+        if let parkSceneImage = parkSceneImage {
+            ImageManager.init(nil).downloadImageFromUrl(url: parkSceneImage, errorHandler: { (error) in
+                //TODO: error handle
+                print(error.localizedDescription)
+                
+            }, completionHandler: { (image) in
+                DispatchQueue.main.async {
+                    if let image = image {
+                        cell.parkSceneImageView.image = image
+                    }
+                    else {
+                        //TODO: 沒有圖片用預設圖片
+                    }
+                }
+            })
+        }
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
         let parkName = ParkScenes.sharedInstance().parkNameArray[indexPath.section]
         let detailVC : DetailViewController = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "detailVC") as! DetailViewController
         detailVC.parkName = parkName
