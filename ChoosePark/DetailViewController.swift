@@ -8,13 +8,15 @@
 
 import UIKit
 
-class DetailViewController: UIViewController {
+class DetailViewController: UIViewController, UICollectionViewDataSource {
 
     @IBOutlet weak var parkSceneImageView: UIImageView!
     @IBOutlet weak var parkNameLabel: UILabel!
     @IBOutlet weak var parkSceneNameLabel: UILabel!
     @IBOutlet weak var openTimeLabel: UILabel!
-    @IBOutlet weak var introLabel: UILabel!
+    @IBOutlet weak var introTextView: UITextView!
+    @IBOutlet weak var otherScenesView: UIView!
+    @IBOutlet weak var collectionView: UICollectionView!
     
     var parkName : String?
     var indexPath : Int?
@@ -29,14 +31,41 @@ class DetailViewController: UIViewController {
             self.parkNameLabel.text = parkScene.parkName
             self.parkSceneNameLabel.text = parkScene.name
             self.openTimeLabel.text = parkScene.openTime
-            self.introLabel.text = parkScene.introduction
+            self.introTextView.text = parkScene.introduction
+            
+            
+            if parkSceneArray.count == 1 {
+                self.otherScenesView.isHidden = true
+            }
+            else {
+                self.otherScenesView.isHidden = false
+            }
         }
-        
+        else {
+            //TODO: error handling
+        }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if let parkName = self.parkName, let parkSceneArray = ParkScenes.sharedInstance().parkSceneDic[parkName] {
+            return parkSceneArray.count
+        }
+        else {
+            return 0
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell : OtherScenesCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "otherScenesCollectionCell", for: indexPath) as! OtherScenesCollectionViewCell
+        let parkSceneName : String = ParkScenes.sharedInstance().parkSceneDic[self.parkName!]![indexPath.row].name
+        cell.parkSceneNameLabel.text = parkSceneName
+        
+        return cell
     }
     
 

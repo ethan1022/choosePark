@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		AA8484462066B09900DD57ED /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8484452066B09900DD57ED /* DetailViewController.swift */; };
+		AA848448206773BD00DD57ED /* OtherScenesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA848447206773BD00DD57ED /* OtherScenesCollectionViewCell.swift */; };
 		AACDCBDB2064FB7F00AF4CDA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACDCBDA2064FB7F00AF4CDA /* AppDelegate.swift */; };
 		AACDCBDD2064FB8000AF4CDA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACDCBDC2064FB8000AF4CDA /* ViewController.swift */; };
 		AACDCBE02064FB8000AF4CDA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AACDCBDE2064FB8000AF4CDA /* Main.storyboard */; };
@@ -24,6 +25,7 @@
 		31EFE6F519656566319D5684 /* Pods_ChoosePark.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChoosePark.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		912342289A73ACF301F5D6CD /* Pods-ChoosePark.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChoosePark.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ChoosePark/Pods-ChoosePark.debug.xcconfig"; sourceTree = "<group>"; };
 		AA8484452066B09900DD57ED /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		AA848447206773BD00DD57ED /* OtherScenesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherScenesCollectionViewCell.swift; sourceTree = "<group>"; };
 		AACDCBD72064FB7F00AF4CDA /* ChoosePark.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChoosePark.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AACDCBDA2064FB7F00AF4CDA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AACDCBDC2064FB8000AF4CDA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -87,6 +89,7 @@
 				AACDCBDC2064FB8000AF4CDA /* ViewController.swift */,
 				AA8484452066B09900DD57ED /* DetailViewController.swift */,
 				AACDCBFB2066453C00AF4CDA /* ParkSceneTableViewCell.swift */,
+				AA848447206773BD00DD57ED /* OtherScenesCollectionViewCell.swift */,
 				AACDCBF72066060F00AF4CDA /* ParkScene.swift */,
 				AACDCBF9206606C000AF4CDA /* ApiManager.swift */,
 				AACDCBDE2064FB8000AF4CDA /* Main.storyboard */,
@@ -238,6 +241,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA848448206773BD00DD57ED /* OtherScenesCollectionViewCell.swift in Sources */,
 				AACDCBFC2066453C00AF4CDA /* ParkSceneTableViewCell.swift in Sources */,
 				AACDCBDD2064FB8000AF4CDA /* ViewController.swift in Sources */,
 				AACDCBDB2064FB7F00AF4CDA /* AppDelegate.swift in Sources */,
