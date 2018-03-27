@@ -55,7 +55,7 @@ class ParkScenes: NSObject {
                                                                imageUrlString: dic[responseJsonKeyImageUrl].string!,
                                                                introduction: dic[responseJsonKeyIntroduction].string!)
                     
-                    if self.parkNameArray.count == 0 || self.parkNameArray.last != dic[responseJsonKeyParkName].string {
+                    if self.parkNameArray.count == 0 || self.parkNameArray.contains(parkScene.parkName) == false {
                         self.parkNameArray.append(dic[responseJsonKeyParkName].string!)
                         self.parkSceneDic[dic[responseJsonKeyParkName].string!] = [parkScene]
                     }
