@@ -12,7 +12,7 @@ class ImageManager: NSObject {
     
     var session : URLSession
     
-    init(_ configuration: URLSessionConfiguration?) {
+    init(configuration: URLSessionConfiguration?) {
         if let configuration = configuration {
             self.session = URLSession(configuration: configuration)
         }
@@ -21,7 +21,7 @@ class ImageManager: NSObject {
         }
     }
     
-    func downloadImageFromUrl(url: URL, errorHandler:@escaping((Error)->()), completionHandler:@escaping(UIImage?)->()) -> URLSessionDataTask {
+    func downloadImageFromUrl(url: URL, errorHandler:@escaping((Error)->()), completionHandler:@escaping(UIImage?)->()) {
         
         let downloadTask = self.session.dataTask(with: url) { (data, response, error) in
             if let error = error {
@@ -44,6 +44,5 @@ class ImageManager: NSObject {
         }
         
         downloadTask.resume()
-        return downloadTask
     }
 }

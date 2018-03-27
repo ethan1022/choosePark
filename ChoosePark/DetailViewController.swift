@@ -32,22 +32,30 @@ class DetailViewController: UIViewController, UICollectionViewDataSource {
             self.parkSceneNameLabel.text = parkScene.name
             self.openTimeLabel.text = parkScene.openTime
             self.introTextView.text = parkScene.introduction
-            if let imageUrl = parkScene.imageUrl {
-                ImageManager.init(nil).downloadImageFromUrl(url: imageUrl, errorHandler: { (error) in
-                    //TODO: error handle
-                    print(error.localizedDescription)
-                    
-                }, completionHandler: { (image) in
-                    if let image = image {
-                        self.parkSceneImageView.image = image
-                    }
-                    else {
-                        //TODO: 使用預設圖片
-                    }
-                })
+            if let image = parkScene.image {
+                self.parkSceneImageView.image = image
             }
             else {
-                //TODO: 使用預設圖片
+                if let imageUrl = parkScene.imageUrl {
+                    ImageManager.init(configuration: nil).downloadImageFromUrl(url: imageUrl, errorHandler: { (error) in
+                        //TODO: error handle
+                        print(error.localizedDescription)
+                        
+                    }, completionHandler: { (image) in
+                        if let image = image {
+                            parkScene.image = image
+                            DispatchQueue.main.async {
+                                self.parkSceneImageView.image = image
+                            }
+                        }
+                        else {
+                            //TODO: 使用預設圖片
+                        }
+                    })
+                }
+                else {
+                    //TODO: 使用預設圖片
+                }
             }
             
             if parkSceneArray.count == 1 {
@@ -79,25 +87,32 @@ class DetailViewController: UIViewController, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell : OtherScenesCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "otherScenesCollectionCell", for: indexPath) as! OtherScenesCollectionViewCell
         let parkSceneName : String = ParkScenes.sharedInstance().parkSceneDic[self.parkName!]![indexPath.row].name
-        let parkSceneImage : URL? = ParkScenes.sharedInstance().parkSceneDic[self.parkName!]![indexPath.row].imageUrl
+        let parkSceneImageUrl : URL? = ParkScenes.sharedInstance().parkSceneDic[self.parkName!]![indexPath.row].imageUrl
+        let parkSceneImage : UIImage? = ParkScenes.sharedInstance().parkSceneDic[self.parkName!]![indexPath.row].image
         
         cell.parkSceneNameLabel.text = parkSceneName
         
         if let parkSceneImage = parkSceneImage {
-            ImageManager.init(nil).downloadImageFromUrl(url: parkSceneImage, errorHandler: { (error) in
-                //TODO: error handle
-                print(error.localizedDescription)
-                
-            }, completionHandler: { (image) in
-                DispatchQueue.main.async {
+            cell.parkSceneImageView.image = parkSceneImage
+        }
+        else {
+            if let parkSceneImageUrl = parkSceneImageUrl {
+                ImageManager.init(configuration: nil).downloadImageFromUrl(url: parkSceneImageUrl, errorHandler: { (error) in
+                    //TODO: error handle
+                    print(error.localizedDescription)
+                    
+                }, completionHandler: { (image) in
                     if let image = image {
-                        cell.parkSceneImageView.image = image
+                        ParkScenes.sharedInstance().parkSceneDic[self.parkName!]![indexPath.row].image = image
+                        DispatchQueue.main.async {
+                            cell.parkSceneImageView.image = image
+                        }
                     }
                     else {
                         //TODO: 沒有圖片用預設圖片
                     }
-                }
-            })
+                })
+            }
         }
         
         return cell

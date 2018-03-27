@@ -17,6 +17,7 @@ class ParkScene: NSObject {
     var openTime : String
     var imageUrl : URL?
     var introduction : String
+    var image : UIImage?
     
     init(_ id : String, parkName : String, name : String, openTime: String, imageUrlString: String, introduction : String) {
         self.id = id
@@ -26,7 +27,6 @@ class ParkScene: NSObject {
         self.imageUrl = URL(string: imageUrlString)
         self.introduction = introduction
     }
-    
 }
 
 class ParkScenes: NSObject {
