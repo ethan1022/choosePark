@@ -11,16 +11,17 @@ import Alamofire
 
 class ApiManager : NSObject {
     
-    let requestUrl = URL(string:"http://data.taipei/opendata/datalist/apiAccess")
+    let requestUrl = URL(string:apiRequestUrlString)
     
     func fetchNewDataWithLimitNumber(_ limit:Int? , offset:Int?) {
-        var paramDic : Dictionary = ["scope":"resourceAquire", "rid":"bf073841-c734-49bf-a97f-3757a6013812"]
+        var paramDic : Dictionary = [apiRequestParamScopeKey:apiRequestParamScopeValue,
+                                     apiRequestParamRidKey:apiRequestParamRidValue]
         
         if let limit = limit {
-            paramDic["limit"] = "\(limit)"
+            paramDic[apiRequestParamLimitKey] = "\(limit)"
         }
         if let offset = offset {
-            paramDic["offset"] = "\(offset)"
+            paramDic[apiRequestParamOffsetKey] = "\(offset)"
         }
         
         Alamofire.request(requestUrl!, method: .get, parameters: paramDic, encoding: URLEncoding.default, headers: nil).responseJSON { (dataResponse) in

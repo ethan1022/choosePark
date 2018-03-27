@@ -17,7 +17,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         ApiManager.init().fetchNewDataWithLimitNumber(nil, offset: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(reloadData), name: NSNotification.Name(rawValue: "reloadTableView"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadData), name: NSNotification.Name(rawValue: reloadTableViewNotification), object: nil)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: reloadTableViewNotification), object: nil)
     }
     
     @objc func reloadData() {
@@ -44,7 +49,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell : ParkSceneTableViewCell = tableView.dequeueReusableCell(withIdentifier: "parkSceneCell", for: indexPath) as! ParkSceneTableViewCell
+        let cell : ParkSceneTableViewCell = tableView.dequeueReusableCell(withIdentifier: mainViewTableViewCellId, for: indexPath) as! ParkSceneTableViewCell
         
         let parkName = ParkScenes.sharedInstance().parkNameArray[indexPath.section]
         let parkSceneName : String = ParkScenes.sharedInstance().parkSceneDic[parkName]![indexPath.row].name
@@ -87,7 +92,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
         let parkName = ParkScenes.sharedInstance().parkNameArray[indexPath.section]
-        let detailVC : DetailViewController = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "detailVC") as! DetailViewController
+        let detailVC : DetailViewController = UIStoryboard.init(name: mainStoryboardName, bundle: Bundle.main).instantiateViewController(withIdentifier: DetailViewControllerId) as! DetailViewController
         detailVC.parkName = parkName
         detailVC.indexPath = indexPath.row
         self.navigationController?.pushViewController(detailVC, animated: true)

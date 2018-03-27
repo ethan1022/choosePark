@@ -47,29 +47,27 @@ class ParkScenes: NSObject {
         do {
             if let data = data {
                 let json = try JSON(data: data)
-                for dic in json["result"]["results"].arrayValue {
-                    let parkScene : ParkScene = ParkScene.init(dic["_id"].string!,
-                                                               parkName: dic["ParkName"].string!,
-                                                               name: dic["Name"].string!,
-                                                               openTime: dic["OpenTime"].string!,
-                                                               imageUrlString: dic["Image"].string!,
-                                                               introduction: dic["Introduction"].string!)
+                for dic in json[responseJsonKeyResult][responseJsonKeyResults].arrayValue {
+                    let parkScene : ParkScene = ParkScene.init(dic[responseJsonKeyId].string!,
+                                                               parkName: dic[responseJsonKeyParkName].string!,
+                                                               name: dic[responseJsonKeyName].string!,
+                                                               openTime: dic[responseJsonKeyOpenTime].string!,
+                                                               imageUrlString: dic[responseJsonKeyImageUrl].string!,
+                                                               introduction: dic[responseJsonKeyIntroduction].string!)
                     
-                    if self.parkNameArray.count == 0 || self.parkNameArray.last != dic["ParkName"].string {
-                        self.parkNameArray.append(dic["ParkName"].string!)
-                        self.parkSceneDic[dic["ParkName"].string!] = [parkScene]
+                    if self.parkNameArray.count == 0 || self.parkNameArray.last != dic[responseJsonKeyParkName].string {
+                        self.parkNameArray.append(dic[responseJsonKeyParkName].string!)
+                        self.parkSceneDic[dic[responseJsonKeyParkName].string!] = [parkScene]
                     }
                     else {
-                        self.parkSceneDic[dic["ParkName"].string!]!.append(parkScene)
+                        self.parkSceneDic[dic[responseJsonKeyParkName].string!]!.append(parkScene)
                     }
                     
                 }
-                print("downloaded")
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reloadTableView"), object: nil)
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: reloadTableViewNotification), object: nil)
             }
         }
         catch {
-            print("failed")
             //TODO: error handling
         }
     }

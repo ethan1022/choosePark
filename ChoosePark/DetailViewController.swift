@@ -85,7 +85,7 @@ class DetailViewController: UIViewController, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell : OtherScenesCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "otherScenesCollectionCell", for: indexPath) as! OtherScenesCollectionViewCell
+        let cell : OtherScenesCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: detailViewOtherScenesCollectionCellId, for: indexPath) as! OtherScenesCollectionViewCell
         let parkSceneName : String = ParkScenes.sharedInstance().parkSceneDic[self.parkName!]![indexPath.row].name
         let parkSceneImageUrl : URL? = ParkScenes.sharedInstance().parkSceneDic[self.parkName!]![indexPath.row].imageUrl
         let parkSceneImage : UIImage? = ParkScenes.sharedInstance().parkSceneDic[self.parkName!]![indexPath.row].image
