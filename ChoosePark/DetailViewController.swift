@@ -78,6 +78,13 @@ class DetailViewController: BasicViewController, UICollectionViewDataSource, UIC
             }
         }
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        DispatchQueue.main.async {
+            self.introTextView.setContentOffset(CGPoint.zero, animated: false)
+        }
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
