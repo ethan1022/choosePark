@@ -155,7 +155,7 @@
                                 <rect key="frame" x="15" y="522" width="360" height="130"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="相關景點" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a6F-Pn-F9R">
-                                        <rect key="frame" x="0.0" y="5" width="69.5" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="5" width="360" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -216,6 +216,7 @@
                                 <constraints>
                                     <constraint firstItem="MB3-Gp-VWa" firstAttribute="top" secondItem="a6F-Pn-F9R" secondAttribute="bottom" constant="5" id="1fQ-JB-7la"/>
                                     <constraint firstItem="MB3-Gp-VWa" firstAttribute="leading" secondItem="Vxz-Av-81Q" secondAttribute="leading" id="NlP-I6-T5C"/>
+                                    <constraint firstAttribute="trailing" secondItem="a6F-Pn-F9R" secondAttribute="trailing" id="b7e-QP-ov2"/>
                                     <constraint firstAttribute="height" constant="130" id="fiq-52-fe5"/>
                                     <constraint firstItem="a6F-Pn-F9R" firstAttribute="leading" secondItem="Vxz-Av-81Q" secondAttribute="leading" id="hLr-tE-0Gg"/>
                                     <constraint firstAttribute="trailing" secondItem="MB3-Gp-VWa" secondAttribute="trailing" id="qrp-qF-t5n"/>
@@ -277,27 +278,47 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="o1w-Kk-ngs">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AxV-oE-wAa">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="o1w-Kk-ngs">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </imageView>
+                                </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </imageView>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="o1w-Kk-ngs" secondAttribute="trailing" id="AKD-xr-qpy"/>
+                                    <constraint firstItem="o1w-Kk-ngs" firstAttribute="centerX" secondItem="AxV-oE-wAa" secondAttribute="centerX" id="BGm-I8-yUv"/>
+                                    <constraint firstItem="o1w-Kk-ngs" firstAttribute="centerY" secondItem="AxV-oE-wAa" secondAttribute="centerY" id="Bch-2S-a02"/>
+                                    <constraint firstItem="o1w-Kk-ngs" firstAttribute="top" secondItem="AxV-oE-wAa" secondAttribute="top" id="EJm-G6-oeB"/>
+                                    <constraint firstItem="o1w-Kk-ngs" firstAttribute="leading" secondItem="AxV-oE-wAa" secondAttribute="leading" id="OCD-wd-YmK"/>
+                                    <constraint firstAttribute="bottom" secondItem="o1w-Kk-ngs" secondAttribute="bottom" id="ZcV-0A-7ps"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="delegate" destination="FoK-xq-y1c" id="jgC-dT-SWx"/>
+                                </connections>
+                            </scrollView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="gKk-tu-d8p" firstAttribute="bottom" secondItem="o1w-Kk-ngs" secondAttribute="bottom" id="2Ej-wQ-5KZ"/>
-                            <constraint firstItem="gKk-tu-d8p" firstAttribute="trailing" secondItem="o1w-Kk-ngs" secondAttribute="trailing" id="5Wa-Nj-6Fp"/>
-                            <constraint firstItem="o1w-Kk-ngs" firstAttribute="leading" secondItem="gKk-tu-d8p" secondAttribute="leading" id="D76-Ld-388"/>
-                            <constraint firstItem="o1w-Kk-ngs" firstAttribute="top" secondItem="gKk-tu-d8p" secondAttribute="top" id="Oax-TL-zmU"/>
+                            <constraint firstItem="o1w-Kk-ngs" firstAttribute="height" secondItem="b9o-Ho-naB" secondAttribute="height" id="5Rf-s1-2ba"/>
+                            <constraint firstItem="AxV-oE-wAa" firstAttribute="bottom" secondItem="gKk-tu-d8p" secondAttribute="bottom" id="6Ga-fV-3bv"/>
+                            <constraint firstItem="AxV-oE-wAa" firstAttribute="top" secondItem="b9o-Ho-naB" secondAttribute="top" id="Krb-Ii-VUJ"/>
+                            <constraint firstItem="AxV-oE-wAa" firstAttribute="leading" secondItem="gKk-tu-d8p" secondAttribute="leading" id="PJu-fX-zNT"/>
+                            <constraint firstItem="o1w-Kk-ngs" firstAttribute="width" secondItem="b9o-Ho-naB" secondAttribute="width" id="TaV-rv-V8F"/>
+                            <constraint firstItem="AxV-oE-wAa" firstAttribute="trailing" secondItem="gKk-tu-d8p" secondAttribute="trailing" id="wPe-HJ-4Gx"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="gKk-tu-d8p"/>
                     </view>
                     <connections>
                         <outlet property="parkSceneImageView" destination="o1w-Kk-ngs" id="MW7-zr-I7o"/>
+                        <outlet property="scrollView" destination="AxV-oE-wAa" id="wlU-5z-2lR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nbd-Sa-DxN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1884" y="133"/>
+            <point key="canvasLocation" x="1884" y="132.68365817091455"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="yMe-qo-ft6">

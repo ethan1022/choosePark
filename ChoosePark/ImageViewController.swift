@@ -8,20 +8,43 @@
 
 import UIKit
 
-class ImageViewController: UIViewController {
+class ImageViewController: UIViewController, UIScrollViewDelegate {
 
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var parkSceneImageView: UIImageView!
-    var parkSceneImage : UIImage?
+    var parkSceneImage : UIImage!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.parkSceneImageView.image = self.parkSceneImage
+        self.scrollView.minimumZoomScale = 1.0
+        self.scrollView.maximumZoomScale = 6.0
+        
+        let doubleTapGesture : UITapGestureRecognizer = UITapGestureRecognizer.init(target: self, action: #selector(handleDoubleTap(_:)))
+        doubleTapGesture.numberOfTapsRequired = 2
+        doubleTapGesture.delegate = self as? UIGestureRecognizerDelegate
+        self.scrollView.addGestureRecognizer(doubleTapGesture)
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    @objc func handleDoubleTap(_ sender: UITapGestureRecognizer) {
+        if self.scrollView.zoomScale < self.scrollView.maximumZoomScale {
+            self.scrollView.setZoomScale(self.scrollView.maximumZoomScale, animated: true)
+        }
+        else {
+            self.scrollView.setZoomScale(self.scrollView.minimumZoomScale, animated: true)
+        }
+    }
+    
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        return self.parkSceneImageView
+    }
+
     
 
     /*
