@@ -43,7 +43,6 @@ class ImageManager: NSObject {
             }
         }
         
-//        downloadTask.resume()
         return downloadTask
     }
 }

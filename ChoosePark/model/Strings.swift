@@ -20,6 +20,7 @@ let mainStoryboardName = "Main"
 
 //MARK: - ViewController Identifier
 let DetailViewControllerId = "detailVC"
+let ImageViewControllerId = "imageVC"
 
 //MARK: - Api
 let apiRequestUrlString = "http://data.taipei/opendata/datalist/apiAccess"

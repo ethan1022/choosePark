@@ -20,6 +20,7 @@
 		AACDCBE32064FB8000AF4CDA /* ChoosePark.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AACDCBE12064FB8000AF4CDA /* ChoosePark.xcdatamodeld */; };
 		AACDCBE52064FB8000AF4CDA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AACDCBE42064FB8000AF4CDA /* Assets.xcassets */; };
 		AACDCBE82064FB8000AF4CDA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AACDCBE62064FB8000AF4CDA /* LaunchScreen.storyboard */; };
+		AAFB2B0E206B718200960A13 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFB2B0D206B718200960A13 /* ImageViewController.swift */; };
 		EEA9FA7944E9C53AEE477C94 /* Pods_ChoosePark.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31EFE6F519656566319D5684 /* Pods_ChoosePark.framework */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +44,7 @@
 		AACDCBE92064FB8000AF4CDA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AACDCBF02065095100AF4CDA /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AACDCBF6206509A800AF4CDA /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AAFB2B0D206B718200960A13 /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 		B8E7468E8436A5436AD6459F /* Pods-ChoosePark.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChoosePark.release.xcconfig"; path = "Pods/Target Support Files/Pods-ChoosePark/Pods-ChoosePark.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -120,6 +122,7 @@
 				AACDCBDA2064FB7F00AF4CDA /* AppDelegate.swift */,
 				AACDCBDC2064FB8000AF4CDA /* ViewController.swift */,
 				AA8484452066B09900DD57ED /* DetailViewController.swift */,
+				AAFB2B0D206B718200960A13 /* ImageViewController.swift */,
 				AA84844E20677C3C00DD57ED /* controller */,
 				AA84844920677C3200DD57ED /* view */,
 				AA84845120677C4A00DD57ED /* model */,
@@ -280,6 +283,7 @@
 				AACDCBDB2064FB7F00AF4CDA /* AppDelegate.swift in Sources */,
 				AACDCBE32064FB8000AF4CDA /* ChoosePark.xcdatamodeld in Sources */,
 				AA84845320677C4A00DD57ED /* ParkScene.swift in Sources */,
+				AAFB2B0E206B718200960A13 /* ImageViewController.swift in Sources */,
 				AA8484462066B09900DD57ED /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

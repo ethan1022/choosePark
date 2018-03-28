@@ -266,7 +266,37 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="04c-w0-Ubw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1232.8" y="132.68365817091455"/>
+            <point key="canvasLocation" x="1183" y="133"/>
+        </scene>
+        <!--Image View Controller-->
+        <scene sceneID="heZ-pK-96i">
+            <objects>
+                <viewController storyboardIdentifier="imageVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="FoK-xq-y1c" customClass="ImageViewController" customModule="ChoosePark" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="b9o-Ho-naB">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="o1w-Kk-ngs">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="gKk-tu-d8p" firstAttribute="bottom" secondItem="o1w-Kk-ngs" secondAttribute="bottom" id="2Ej-wQ-5KZ"/>
+                            <constraint firstItem="gKk-tu-d8p" firstAttribute="trailing" secondItem="o1w-Kk-ngs" secondAttribute="trailing" id="5Wa-Nj-6Fp"/>
+                            <constraint firstItem="o1w-Kk-ngs" firstAttribute="leading" secondItem="gKk-tu-d8p" secondAttribute="leading" id="D76-Ld-388"/>
+                            <constraint firstItem="o1w-Kk-ngs" firstAttribute="top" secondItem="gKk-tu-d8p" secondAttribute="top" id="Oax-TL-zmU"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="gKk-tu-d8p"/>
+                    </view>
+                    <connections>
+                        <outlet property="parkSceneImageView" destination="o1w-Kk-ngs" id="MW7-zr-I7o"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nbd-Sa-DxN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1884" y="133"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="yMe-qo-ft6">

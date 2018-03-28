@@ -34,6 +34,7 @@ class DetailViewController: UIViewController, UICollectionViewDataSource, UIColl
             self.introTextView.text = parkScene.introduction
             if let image = parkScene.image {
                 self.parkSceneImageView.image = image
+                self.setupImageViewClickAction()
             }
             else {
                 if let imageUrl = parkScene.imageUrl {
@@ -44,6 +45,7 @@ class DetailViewController: UIViewController, UICollectionViewDataSource, UIColl
                     }, completionHandler: { (image) in
                         if let image = image {
                             parkScene.image = image
+                            self.setupImageViewClickAction()
                             DispatchQueue.main.async {
                                 self.parkSceneImageView.image = image
                             }
@@ -52,6 +54,7 @@ class DetailViewController: UIViewController, UICollectionViewDataSource, UIColl
                             //TODO: 使用預設圖片
                         }
                     })
+                    parkScene.dataTask!.resume()
                 }
                 else {
                     //TODO: 使用預設圖片
@@ -73,6 +76,21 @@ class DetailViewController: UIViewController, UICollectionViewDataSource, UIColl
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func setupImageViewClickAction() {
+        self.parkSceneImageView.isUserInteractionEnabled = true
+        let tapGestureRecognition = UITapGestureRecognizer.init(target: self, action: #selector(onClickImageView(_:)))
+        tapGestureRecognition.numberOfTapsRequired = 1
+        tapGestureRecognition.delegate = self as? UIGestureRecognizerDelegate
+        self.parkSceneImageView.addGestureRecognizer(tapGestureRecognition)
+    }
+    
+    @objc func onClickImageView(_ sender: UITapGestureRecognizer) {
+        let imageVC : ImageViewController = UIStoryboard.init(name: mainStoryboardName, bundle: Bundle.main).instantiateViewController(withIdentifier: ImageViewControllerId) as! ImageViewController
+        imageVC.parkSceneImage = self.parkSceneImageView.image
+        self.navigationController?.pushViewController(imageVC, animated: true)
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
