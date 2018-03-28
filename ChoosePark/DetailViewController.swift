@@ -22,7 +22,7 @@ class DetailViewController: UIViewController, UICollectionViewDataSource, UIColl
     var parkName : String!
     var indexPath : Int!
     var otherSceneArray : Array<ParkScene> = []
-    
+    let tempImage : UIImage = UIImage.init(named: tempImageName)!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,11 +33,13 @@ class DetailViewController: UIViewController, UICollectionViewDataSource, UIColl
             self.parkSceneNameLabel.text = parkScene.name
             self.openTimeLabel.text = parkScene.openTime
             self.introTextView.text = parkScene.introduction
+            
             if let image = parkScene.image {
                 self.parkSceneImageView.image = image
                 self.setupImageViewClickAction()
             }
             else {
+                self.parkSceneImageView.image = self.tempImage
                 if let imageUrl = parkScene.imageUrl {
                     parkScene.dataTask = ImageManager.init(configuration: nil).downloadImageFromUrl(url: imageUrl, errorHandler: { (error) in
                         //TODO: error handle
@@ -52,13 +54,13 @@ class DetailViewController: UIViewController, UICollectionViewDataSource, UIColl
                             }
                         }
                         else {
-                            //TODO: 使用預設圖片
+                            self.parkSceneImageView.image = self.tempImage
                         }
                     })
                     parkScene.dataTask!.resume()
                 }
                 else {
-                    //TODO: 使用預設圖片
+                    self.parkSceneImageView.image = self.tempImage
                 }
             }
             
@@ -106,11 +108,13 @@ class DetailViewController: UIViewController, UICollectionViewDataSource, UIColl
         let parkSceneImage : UIImage? = self.otherSceneArray[indexPath.row].image
         
         cell.parkSceneNameLabel.text = parkSceneName
+        cell.parkSceneImageView.image = self.tempImage
         
         if let parkSceneImage = parkSceneImage {
             cell.parkSceneImageView.image = parkSceneImage
         }
         else {
+            cell.parkSceneImageView.image = self.tempImage
             if let parkSceneImageUrl = parkSceneImageUrl {
                 self.otherSceneArray[indexPath.row].dataTask = ImageManager.init(configuration: nil).downloadImageFromUrl(url: parkSceneImageUrl, errorHandler: { (error) in
                     //TODO: error handle
@@ -118,12 +122,13 @@ class DetailViewController: UIViewController, UICollectionViewDataSource, UIColl
                     
                 }, completionHandler: { (image) in
                     if let image = image {
+                        self.otherSceneArray[indexPath.row].image = image
                         DispatchQueue.main.async {
                             cell.parkSceneImageView.image = image
                         }
                     }
                     else {
-                        //TODO: 沒有圖片用預設圖片
+                        cell.parkSceneImageView.image = self.tempImage
                     }
                 })
             }

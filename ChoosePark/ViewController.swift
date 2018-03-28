@@ -12,6 +12,7 @@ import Alamofire
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var tableView: UITableView!
+    let tempImage : UIImage = UIImage.init(named: tempImageName)!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,12 +62,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         cell.parkNameLabel.text = singleParkName
         cell.parkSceneNameLabel.text = parkSceneName
         cell.parkSceneIntroLabel.text = parkSceneIntro
-        cell.parkSceneImageView.image = nil //TODO: 先用預設圖片
         
         if let parkSceneImage = parkSceneImage {
             cell.parkSceneImageView.image = parkSceneImage
         }
         else {
+            cell.parkSceneImageView.image = self.tempImage
             if let parkSceneImageUrl = parkSceneImageUrl {
                 ParkScenes.sharedInstance().parkSceneDic[parkName]![indexPath.row].dataTask = ImageManager.init(configuration: nil).downloadImageFromUrl(url: parkSceneImageUrl, errorHandler: { (error) in
                     //TODO: error handle

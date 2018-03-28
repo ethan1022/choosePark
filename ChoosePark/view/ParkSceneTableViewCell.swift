@@ -14,9 +14,12 @@ class ParkSceneTableViewCell: UITableViewCell {
     @IBOutlet weak var parkNameLabel: UILabel!
     @IBOutlet weak var parkSceneNameLabel: UILabel!
     @IBOutlet weak var parkSceneIntroLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        self.parkSceneImageView.layer.cornerRadius = 5
+        self.parkSceneImageView.clipsToBounds = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
