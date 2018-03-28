@@ -124,7 +124,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4qA-5I-vB2">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4qA-5I-vB2">
                                 <rect key="frame" x="0.0" y="20" width="375" height="187.5"/>
                                 <color key="backgroundColor" red="0.2752828598" green="0.76783555749999999" blue="0.75455856320000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -177,7 +177,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="85" height="98.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5jn-4z-7mu">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5jn-4z-7mu">
                                                             <rect key="frame" x="0.0" y="0.0" width="85" height="60"/>
                                                             <color key="backgroundColor" red="0.2752828598" green="0.76783555749999999" blue="0.75455856320000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
