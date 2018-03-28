@@ -21,7 +21,7 @@ class ImageManager: NSObject {
         }
     }
     
-    func downloadImageFromUrl(url: URL, errorHandler:@escaping((Error)->()), completionHandler:@escaping(UIImage?)->()) {
+    func downloadImageFromUrl(url: URL, errorHandler:@escaping((Error)->()), completionHandler:@escaping(UIImage?)->()) -> URLSessionDataTask {
         
         let downloadTask = self.session.dataTask(with: url) { (data, response, error) in
             if let error = error {
@@ -43,6 +43,7 @@ class ImageManager: NSObject {
             }
         }
         
-        downloadTask.resume()
+//        downloadTask.resume()
+        return downloadTask
     }
 }

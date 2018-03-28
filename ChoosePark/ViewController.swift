@@ -68,7 +68,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
         else {
             if let parkSceneImageUrl = parkSceneImageUrl {
-                ImageManager.init(configuration: nil).downloadImageFromUrl(url: parkSceneImageUrl, errorHandler: { (error) in
+                ParkScenes.sharedInstance().parkSceneDic[parkName]![indexPath.row].dataTask = ImageManager.init(configuration: nil).downloadImageFromUrl(url: parkSceneImageUrl, errorHandler: { (error) in
                     //TODO: error handle
                     print(error.localizedDescription)
                     
@@ -96,6 +96,28 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         detailVC.parkName = parkName
         detailVC.indexPath = indexPath.row
         self.navigationController?.pushViewController(detailVC, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let parkName = ParkScenes.sharedInstance().parkNameArray[indexPath.section]
+        let image : UIImage? = ParkScenes.sharedInstance().parkSceneDic[parkName]![indexPath.row].image
+        let dataTask : URLSessionDataTask? = ParkScenes.sharedInstance().parkSceneDic[parkName]![indexPath.row].dataTask
+        if image == nil {
+            if let dataTask = dataTask {
+                dataTask.cancel()
+            }
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let parkName = ParkScenes.sharedInstance().parkNameArray[indexPath.section]
+        let image : UIImage? = ParkScenes.sharedInstance().parkSceneDic[parkName]![indexPath.row].image
+        let dataTask : URLSessionDataTask? = ParkScenes.sharedInstance().parkSceneDic[parkName]![indexPath.row].dataTask
+        if image == nil {
+            if let dataTask = dataTask {
+                dataTask.resume()
+            }
+        }
     }
 
 

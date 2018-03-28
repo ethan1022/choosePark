@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DetailViewController: UIViewController, UICollectionViewDataSource {
+class DetailViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
 
     @IBOutlet weak var parkSceneImageView: UIImageView!
     @IBOutlet weak var parkNameLabel: UILabel!
@@ -37,7 +37,7 @@ class DetailViewController: UIViewController, UICollectionViewDataSource {
             }
             else {
                 if let imageUrl = parkScene.imageUrl {
-                    ImageManager.init(configuration: nil).downloadImageFromUrl(url: imageUrl, errorHandler: { (error) in
+                    parkScene.dataTask = ImageManager.init(configuration: nil).downloadImageFromUrl(url: imageUrl, errorHandler: { (error) in
                         //TODO: error handle
                         print(error.localizedDescription)
                         
@@ -97,7 +97,7 @@ class DetailViewController: UIViewController, UICollectionViewDataSource {
         }
         else {
             if let parkSceneImageUrl = parkSceneImageUrl {
-                ImageManager.init(configuration: nil).downloadImageFromUrl(url: parkSceneImageUrl, errorHandler: { (error) in
+                ParkScenes.sharedInstance().parkSceneDic[self.parkName!]![indexPath.row].dataTask = ImageManager.init(configuration: nil).downloadImageFromUrl(url: parkSceneImageUrl, errorHandler: { (error) in
                     //TODO: error handle
                     print(error.localizedDescription)
                     
@@ -116,6 +116,26 @@ class DetailViewController: UIViewController, UICollectionViewDataSource {
         }
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        let image : UIImage? = ParkScenes.sharedInstance().parkSceneDic[self.parkName!]![indexPath.row].image
+        if image == nil {
+            let dataTask : URLSessionDataTask? = ParkScenes.sharedInstance().parkSceneDic[self.parkName!]![indexPath.row].dataTask
+            if let dataTask = dataTask {
+                dataTask.cancel()
+            }
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        let image : UIImage? = ParkScenes.sharedInstance().parkSceneDic[self.parkName!]![indexPath.row].image
+        if image == nil {
+            let dataTask : URLSessionDataTask? = ParkScenes.sharedInstance().parkSceneDic[self.parkName!]![indexPath.row].dataTask
+            if let dataTask = dataTask {
+                dataTask.resume()
+            }
+        }
     }
     
 
