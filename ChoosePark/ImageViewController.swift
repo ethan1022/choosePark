@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ImageViewController: UIViewController, UIScrollViewDelegate {
+class ImageViewController: BasicViewController, UIScrollViewDelegate {
 
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var parkSceneImageView: UIImageView!

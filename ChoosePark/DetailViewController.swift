@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DetailViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class DetailViewController: BasicViewController, UICollectionViewDataSource, UICollectionViewDelegate {
 
     @IBOutlet weak var parkSceneImageView: UIImageView!
     @IBOutlet weak var parkNameLabel: UILabel!

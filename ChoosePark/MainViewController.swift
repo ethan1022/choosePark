@@ -9,7 +9,7 @@
 import UIKit
 import Alamofire
 
-class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class MainViewController: BasicViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     let tempImage : UIImage = UIImage.init(named: tempImageName)!
