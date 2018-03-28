@@ -34,11 +34,13 @@ class ImageManager: NSObject {
                         completionHandler(image)
                     }
                     else {
-                        //TODO : 檔案損壞的 error handling
+                        completionHandler(nil)
+                        print("檔案可能損毀")
                     }
                 }
                 else {
-                    //TODO : 沒有檔案的error handling
+                    completionHandler(nil)
+                    print("資料庫沒有檔案")
                 }
             }
         }

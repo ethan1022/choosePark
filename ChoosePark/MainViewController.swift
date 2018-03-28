@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MainViewController.swift
 //  ChoosePark
 //
 //  Created by Ethan on 2018/3/23.
@@ -9,7 +9,7 @@
 import UIKit
 import Alamofire
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     let tempImage : UIImage = UIImage.init(named: tempImageName)!
@@ -81,7 +81,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                         }
                     }
                     else {
-                        //TODO: 沒有圖片用預設圖片
+                        cell.parkSceneImageView.image = self.tempImage
                     }
                 })
             }
