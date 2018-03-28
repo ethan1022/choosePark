@@ -26,7 +26,6 @@ class ImageManager: NSObject {
         let downloadTask = self.session.dataTask(with: url) { (data, response, error) in
             if let error = error {
                 errorHandler(error)
-                //TODO : error handling
             }
             else {
                 if response != nil {

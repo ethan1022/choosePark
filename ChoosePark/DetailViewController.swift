@@ -17,6 +17,7 @@ class DetailViewController: BasicViewController, UICollectionViewDataSource, UIC
     @IBOutlet weak var introTextView: UITextView!
     @IBOutlet weak var otherScenesView: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var introTextViewBottomConstraint: NSLayoutConstraint!
     
     var parkName : String!
@@ -27,12 +28,13 @@ class DetailViewController: BasicViewController, UICollectionViewDataSource, UIC
     override func viewDidLoad() {
         super.viewDidLoad()
         if let parkSceneArray = ParkScenes.sharedInstance().parkSceneDic[self.parkName] {
-            
             let parkScene : ParkScene = parkSceneArray[self.indexPath]
             self.parkNameLabel.text = parkScene.parkName
             self.parkSceneNameLabel.text = parkScene.name
             self.openTimeLabel.text = parkScene.openTime
             self.introTextView.text = parkScene.introduction
+            
+            self.errorLabel.isHidden = true
             
             if let image = parkScene.image {
                 self.parkSceneImageView.image = image
@@ -42,14 +44,17 @@ class DetailViewController: BasicViewController, UICollectionViewDataSource, UIC
                 self.parkSceneImageView.image = self.tempImage
                 if let imageUrl = parkScene.imageUrl {
                     parkScene.dataTask = ImageManager.init(configuration: nil).downloadImageFromUrl(url: imageUrl, errorHandler: { (error) in
-                        //TODO: error handle
+                        DispatchQueue.main.async {
+                            self.errorLabel.isHidden = false
+                            self.errorLabel.text = imageErrorMessage
+                        }
                         print(error.localizedDescription)
                         
                     }, completionHandler: { (image) in
                         if let image = image {
                             parkScene.image = image
-                            self.setupImageViewClickAction()
                             DispatchQueue.main.async {
+                                self.setupImageViewClickAction()
                                 self.parkSceneImageView.image = image
                             }
                         }
@@ -71,9 +76,6 @@ class DetailViewController: BasicViewController, UICollectionViewDataSource, UIC
             else {
                 self.otherScenesView.isHidden = false
             }
-        }
-        else {
-            //TODO: error handling
         }
     }
 
@@ -117,7 +119,6 @@ class DetailViewController: BasicViewController, UICollectionViewDataSource, UIC
             cell.parkSceneImageView.image = self.tempImage
             if let parkSceneImageUrl = parkSceneImageUrl {
                 self.otherSceneArray[indexPath.row].dataTask = ImageManager.init(configuration: nil).downloadImageFromUrl(url: parkSceneImageUrl, errorHandler: { (error) in
-                    //TODO: error handle
                     print(error.localizedDescription)
                     
                 }, completionHandler: { (image) in

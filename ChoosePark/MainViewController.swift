@@ -11,28 +11,45 @@ import Alamofire
 
 class MainViewController: BasicViewController, UITableViewDataSource, UITableViewDelegate {
 
+    @IBOutlet weak var reloadDataButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var emptyView: UIView!
     let tempImage : UIImage = UIImage.init(named: tempImageName)!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        self.emptyView.isHidden = true
+        self.reloadDataButton.layer.cornerRadius = 20
+        self.reloadDataButton.clipsToBounds = true
+        
         ApiManager.init().fetchNewDataWithLimitNumber(nil, offset: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(reloadData), name: NSNotification.Name(rawValue: reloadTableViewNotification), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadTableView(_:)), name: NSNotification.Name(rawValue: reloadTableViewNotification), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(dataErrorHandle(_:)), name: NSNotification.Name(rawValue: jsonErrorNotification), object: nil)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: reloadTableViewNotification), object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: jsonErrorNotification), object: nil)
     }
     
-    @objc func reloadData() {
-        self.tableView.reloadData()
-    }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @objc func reloadTableView(_ notification: Notification) {
+        self.tableView.reloadData()
+    }
+    
+    @objc func dataErrorHandle(_ notification: Notification) {
+        self.emptyView.isHidden = false
+    }
+    
+    @IBAction func onClickReloadDataButton(_ sender: Any) {
+        self.emptyView.isHidden = true
+        ApiManager.init().fetchNewDataWithLimitNumber(nil, offset: nil)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -70,8 +87,8 @@ class MainViewController: BasicViewController, UITableViewDataSource, UITableVie
             cell.parkSceneImageView.image = self.tempImage
             if let parkSceneImageUrl = parkSceneImageUrl {
                 ParkScenes.sharedInstance().parkSceneDic[parkName]![indexPath.row].dataTask = ImageManager.init(configuration: nil).downloadImageFromUrl(url: parkSceneImageUrl, errorHandler: { (error) in
-                    //TODO: error handle
                     print(error.localizedDescription)
+                    //Just show temp image
                     
                 }, completionHandler: { (image) in
                     if let image = image {
@@ -79,9 +96,6 @@ class MainViewController: BasicViewController, UITableViewDataSource, UITableVie
                         DispatchQueue.main.async {
                             cell.parkSceneImageView.image = image
                         }
-                    }
-                    else {
-                        cell.parkSceneImageView.image = self.tempImage
                     }
                 })
             }

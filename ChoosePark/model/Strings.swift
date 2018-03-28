@@ -10,6 +10,7 @@ import Foundation
 
 //MARK: - Notification Name
 let reloadTableViewNotification = "reloadTableView"
+let jsonErrorNotification = "showEmptyView"
 
 //MARK: - Cell Identifier
 let mainViewTableViewCellId = "parkSceneCell"
@@ -44,6 +45,9 @@ let responseJsonKeyOpenTime = "OpenTime"
 let responseJsonKeyImageUrl = "Image"
 let responseJsonKeyIntroduction = "Introduction"
 
+//MARK: - Error Message
+
+let imageErrorMessage = "似乎網路有些不穩，請稍候再試"
 
 
 class Strings: NSObject {}

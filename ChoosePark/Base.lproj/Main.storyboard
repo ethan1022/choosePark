@@ -97,11 +97,49 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="wSe-lA-D2u"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QNI-qO-y0m">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yi8-gb-knd">
+                                        <rect key="frame" x="50.5" y="211.5" width="274.5" height="81.5"/>
+                                        <string key="text">網路狀態不佳
+點擊按鈕重整資料</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="34"/>
+                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FAY-Al-ztD">
+                                        <rect key="frame" x="137" y="313" width="100" height="40"/>
+                                        <color key="backgroundColor" red="1" green="0.78039215689999997" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="CVg-3n-Cgq"/>
+                                            <constraint firstAttribute="width" constant="100" id="Jvj-Yn-nAp"/>
+                                        </constraints>
+                                        <state key="normal" title="重整資料">
+                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="onClickReloadDataButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="AIH-Pc-jxf"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="FAY-Al-ztD" firstAttribute="top" secondItem="Yi8-gb-knd" secondAttribute="bottom" constant="20" id="CWS-3B-RHe"/>
+                                    <constraint firstItem="Yi8-gb-knd" firstAttribute="centerX" secondItem="QNI-qO-y0m" secondAttribute="centerX" id="LXc-0P-iO5"/>
+                                    <constraint firstItem="FAY-Al-ztD" firstAttribute="centerX" secondItem="QNI-qO-y0m" secondAttribute="centerX" id="MAB-Zz-3SZ"/>
+                                    <constraint firstItem="FAY-Al-ztD" firstAttribute="centerY" secondItem="QNI-qO-y0m" secondAttribute="centerY" id="lXr-lk-ZXz"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="ppB-iA-Lie" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="0WG-AK-gDm"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ppB-iA-Lie" secondAttribute="bottom" id="LHv-H3-QSy"/>
+                            <constraint firstItem="QNI-qO-y0m" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="MG5-3c-tgf"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="QNI-qO-y0m" secondAttribute="bottom" id="T4g-7V-N3Z"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="QNI-qO-y0m" secondAttribute="trailing" id="VuI-Yf-lSU"/>
+                            <constraint firstItem="QNI-qO-y0m" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="bNi-Nc-krR"/>
                             <constraint firstItem="ppB-iA-Lie" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="fLb-6o-LH7"/>
                             <constraint firstItem="ppB-iA-Lie" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="vd9-h8-Pa4"/>
                         </constraints>
@@ -109,6 +147,8 @@
                     </view>
                     <navigationItem key="navigationItem" title="臺北市公園景點" id="c0Z-Mw-TEI"/>
                     <connections>
+                        <outlet property="emptyView" destination="QNI-qO-y0m" id="f8q-sS-eQU"/>
+                        <outlet property="reloadDataButton" destination="FAY-Al-ztD" id="Zki-CU-Kfq"/>
                         <outlet property="tableView" destination="ppB-iA-Lie" id="xIL-Ca-qSg"/>
                     </connections>
                 </viewController>
@@ -230,6 +270,12 @@
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d0n-46-HEW">
+                                <rect key="frame" x="15" y="177.5" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -252,11 +298,14 @@
                             <constraint firstItem="Vxz-Av-81Q" firstAttribute="leading" secondItem="wDM-7H-ug3" secondAttribute="leading" constant="15" id="u3P-sH-DHE"/>
                             <constraint firstItem="hfN-1w-kFh" firstAttribute="top" secondItem="4qA-5I-vB2" secondAttribute="bottom" constant="20" id="vel-Ay-eDd"/>
                             <constraint firstItem="18M-Pq-uq1" firstAttribute="top" secondItem="hfN-1w-kFh" secondAttribute="bottom" constant="7" id="xwr-8t-Sdt"/>
+                            <constraint firstItem="d0n-46-HEW" firstAttribute="leading" secondItem="wDM-7H-ug3" secondAttribute="leading" constant="15" id="yCe-Pd-aTd"/>
+                            <constraint firstItem="d0n-46-HEW" firstAttribute="top" secondItem="4qA-5I-vB2" secondAttribute="bottom" constant="-30" id="zOX-yy-FPK"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="wDM-7H-ug3"/>
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="MB3-Gp-VWa" id="Nfd-Kf-lin"/>
+                        <outlet property="errorLabel" destination="d0n-46-HEW" id="00g-DG-YYe"/>
                         <outlet property="introTextView" destination="4P6-OM-WdX" id="EVG-Sd-bOi"/>
                         <outlet property="introTextViewBottomConstraint" destination="aIz-Le-jvA" id="GoM-TB-Ysi"/>
                         <outlet property="openTimeLabel" destination="OoH-mS-2qo" id="HUD-MO-mll"/>

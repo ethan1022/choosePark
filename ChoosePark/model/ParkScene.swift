@@ -69,7 +69,8 @@ class ParkScenes: NSObject {
             }
         }
         catch {
-            //TODO: error handling
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: jsonErrorNotification), object: nil)
+            print(error.localizedDescription)
         }
     }
     
