@@ -93,8 +93,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         tableView.deselectRow(at: indexPath, animated: false)
         let parkName = ParkScenes.sharedInstance().parkNameArray[indexPath.section]
         let detailVC : DetailViewController = UIStoryboard.init(name: mainStoryboardName, bundle: Bundle.main).instantiateViewController(withIdentifier: DetailViewControllerId) as! DetailViewController
+        var otherSceneArray = ParkScenes.sharedInstance().parkSceneDic[parkName]!
+        otherSceneArray.remove(at: indexPath.row)
         detailVC.parkName = parkName
         detailVC.indexPath = indexPath.row
+        detailVC.otherSceneArray = otherSceneArray
+        
         self.navigationController?.pushViewController(detailVC, animated: true)
     }
     

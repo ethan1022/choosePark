@@ -17,17 +17,18 @@ class DetailViewController: UIViewController, UICollectionViewDataSource, UIColl
     @IBOutlet weak var introTextView: UITextView!
     @IBOutlet weak var otherScenesView: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var introTextViewBottomConstraint: NSLayoutConstraint!
     
-    var parkName : String?
-    var indexPath : Int?
+    var parkName : String!
+    var indexPath : Int!
+    var otherSceneArray : Array<ParkScene> = []
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let parkName = self.parkName,
-            let indexPath = self.indexPath,
-            let parkSceneArray = ParkScenes.sharedInstance().parkSceneDic[parkName] {
+        if let parkSceneArray = ParkScenes.sharedInstance().parkSceneDic[self.parkName] {
             
-            let parkScene : ParkScene = parkSceneArray[indexPath]
+            let parkScene : ParkScene = parkSceneArray[self.indexPath]
             self.parkNameLabel.text = parkScene.parkName
             self.parkSceneNameLabel.text = parkScene.name
             self.openTimeLabel.text = parkScene.openTime
@@ -61,8 +62,9 @@ class DetailViewController: UIViewController, UICollectionViewDataSource, UIColl
                 }
             }
             
-            if parkSceneArray.count == 1 {
+            if self.otherSceneArray.count == 0 {
                 self.otherScenesView.isHidden = true
+                self.introTextViewBottomConstraint.constant = 0
             }
             else {
                 self.otherScenesView.isHidden = false
@@ -94,19 +96,14 @@ class DetailViewController: UIViewController, UICollectionViewDataSource, UIColl
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if let parkName = self.parkName, let parkSceneArray = ParkScenes.sharedInstance().parkSceneDic[parkName] {
-            return parkSceneArray.count
-        }
-        else {
-            return 0
-        }
+        return self.otherSceneArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell : OtherScenesCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: detailViewOtherScenesCollectionCellId, for: indexPath) as! OtherScenesCollectionViewCell
-        let parkSceneName : String = ParkScenes.sharedInstance().parkSceneDic[self.parkName!]![indexPath.row].name
-        let parkSceneImageUrl : URL? = ParkScenes.sharedInstance().parkSceneDic[self.parkName!]![indexPath.row].imageUrl
-        let parkSceneImage : UIImage? = ParkScenes.sharedInstance().parkSceneDic[self.parkName!]![indexPath.row].image
+        let parkSceneName : String = self.otherSceneArray[indexPath.row].name
+        let parkSceneImageUrl : URL? = self.otherSceneArray[indexPath.row].imageUrl
+        let parkSceneImage : UIImage? = self.otherSceneArray[indexPath.row].image
         
         cell.parkSceneNameLabel.text = parkSceneName
         
@@ -115,13 +112,12 @@ class DetailViewController: UIViewController, UICollectionViewDataSource, UIColl
         }
         else {
             if let parkSceneImageUrl = parkSceneImageUrl {
-                ParkScenes.sharedInstance().parkSceneDic[self.parkName!]![indexPath.row].dataTask = ImageManager.init(configuration: nil).downloadImageFromUrl(url: parkSceneImageUrl, errorHandler: { (error) in
+                self.otherSceneArray[indexPath.row].dataTask = ImageManager.init(configuration: nil).downloadImageFromUrl(url: parkSceneImageUrl, errorHandler: { (error) in
                     //TODO: error handle
                     print(error.localizedDescription)
                     
                 }, completionHandler: { (image) in
                     if let image = image {
-                        ParkScenes.sharedInstance().parkSceneDic[self.parkName!]![indexPath.row].image = image
                         DispatchQueue.main.async {
                             cell.parkSceneImageView.image = image
                         }
@@ -137,9 +133,9 @@ class DetailViewController: UIViewController, UICollectionViewDataSource, UIColl
     }
     
     func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        let image : UIImage? = ParkScenes.sharedInstance().parkSceneDic[self.parkName!]![indexPath.row].image
+        let image : UIImage? = self.otherSceneArray[indexPath.row].image
         if image == nil {
-            let dataTask : URLSessionDataTask? = ParkScenes.sharedInstance().parkSceneDic[self.parkName!]![indexPath.row].dataTask
+            let dataTask : URLSessionDataTask? = self.otherSceneArray[indexPath.row].dataTask
             if let dataTask = dataTask {
                 dataTask.cancel()
             }
@@ -147,9 +143,9 @@ class DetailViewController: UIViewController, UICollectionViewDataSource, UIColl
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        let image : UIImage? = ParkScenes.sharedInstance().parkSceneDic[self.parkName!]![indexPath.row].image
+        let image : UIImage? = self.otherSceneArray[indexPath.row].image
         if image == nil {
-            let dataTask : URLSessionDataTask? = ParkScenes.sharedInstance().parkSceneDic[self.parkName!]![indexPath.row].dataTask
+            let dataTask : URLSessionDataTask? = self.otherSceneArray[indexPath.row].dataTask
             if let dataTask = dataTask {
                 dataTask.resume()
             }

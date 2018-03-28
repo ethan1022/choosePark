@@ -232,7 +232,6 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Vxz-Av-81Q" firstAttribute="top" secondItem="4P6-OM-WdX" secondAttribute="bottom" constant="10" id="1pt-r7-moz"/>
                             <constraint firstItem="4P6-OM-WdX" firstAttribute="top" secondItem="OoH-mS-2qo" secondAttribute="bottom" constant="10" id="Agp-qP-z2o"/>
                             <constraint firstItem="wDM-7H-ug3" firstAttribute="bottom" secondItem="Vxz-Av-81Q" secondAttribute="bottom" constant="15" id="BhM-8G-2hj"/>
                             <constraint firstItem="wDM-7H-ug3" firstAttribute="trailing" secondItem="hfN-1w-kFh" secondAttribute="trailing" constant="15" id="I77-Pe-y2s"/>
@@ -242,6 +241,7 @@
                             <constraint firstAttribute="trailing" secondItem="OoH-mS-2qo" secondAttribute="trailing" constant="15" id="QKT-ko-3mu"/>
                             <constraint firstItem="wDM-7H-ug3" firstAttribute="trailing" secondItem="4qA-5I-vB2" secondAttribute="trailing" id="UsE-DW-7Os"/>
                             <constraint firstItem="hfN-1w-kFh" firstAttribute="leading" secondItem="wDM-7H-ug3" secondAttribute="leading" constant="15" id="WDB-5j-eJ2"/>
+                            <constraint firstItem="4P6-OM-WdX" firstAttribute="bottom" secondItem="wDM-7H-ug3" secondAttribute="bottom" constant="-155" id="aIz-Le-jvA"/>
                             <constraint firstItem="OoH-mS-2qo" firstAttribute="top" secondItem="18M-Pq-uq1" secondAttribute="bottom" constant="10" id="afg-Aj-EMI"/>
                             <constraint firstItem="4qA-5I-vB2" firstAttribute="leading" secondItem="0Rj-OX-mIV" secondAttribute="leading" id="bDD-sp-2GI"/>
                             <constraint firstItem="4qA-5I-vB2" firstAttribute="top" secondItem="wDM-7H-ug3" secondAttribute="top" id="ixD-ub-qXw"/>
@@ -257,6 +257,7 @@
                     <connections>
                         <outlet property="collectionView" destination="MB3-Gp-VWa" id="Nfd-Kf-lin"/>
                         <outlet property="introTextView" destination="4P6-OM-WdX" id="EVG-Sd-bOi"/>
+                        <outlet property="introTextViewBottomConstraint" destination="aIz-Le-jvA" id="GoM-TB-Ysi"/>
                         <outlet property="openTimeLabel" destination="OoH-mS-2qo" id="HUD-MO-mll"/>
                         <outlet property="otherScenesView" destination="Vxz-Av-81Q" id="EDd-Hy-HdZ"/>
                         <outlet property="parkNameLabel" destination="hfN-1w-kFh" id="YYW-E4-2zr"/>
@@ -266,7 +267,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="04c-w0-Ubw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1183" y="133"/>
+            <point key="canvasLocation" x="1181.5999999999999" y="132.68365817091455"/>
         </scene>
         <!--Image View Controller-->
         <scene sceneID="heZ-pK-96i">
